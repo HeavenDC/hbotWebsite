@@ -130,3 +130,5 @@ dist
 .pnp.*
 
 package-lock.json
+src/configs/serverConfig.ts
+src/configs/botConfig.ts
