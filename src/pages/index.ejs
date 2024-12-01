@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <script src="./assets/js/script.js"></script>
+  <link rel="stylesheet" href="./assets/css/tailwind.css">
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+  <link href="https://unpkg.com/movement.css/movement.css" rel="stylesheet">
+  <!-- Primary Meta Tags -->
+  <title>HeavenBot</title>
+  <meta name="title" content="HeavenBot">
+  <meta name="description" content="Le site internet d'HeavenBot !">
+
+  <link rel="icon" href="./assets/images/hbotLogo.jpg" type="image/x-icon">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://heaven.newzen.fr/">
+  <meta property="og:title" content="HeavenBot">
+  <meta property="og:description" content="Le site internet d'HeavenBot !">
+  <meta property="og:image"
+    content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png">
+</head>
+
+<body>
+  <br>
+  <div class="w-full text-white">
+    <div x-data="{ open: false }"
+      class="w-full  flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-4 lg:px-4">
+      <div class="p-6 flex flex-row items-center justify-between">
+        <a href="/" class="py-2 mt-2 text-lg font-semibold  rounded-lg  text-white ">HeavenBot
+        </a>
+        <button class="text-white md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
+          <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
+            <path x-show="!open" fill-rule="evenodd"
+              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
+              clip-rule="evenodd"></path>
+            <path x-show="open" fill-rule="evenodd"
+              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </button>
+      </div>
+      <nav :class="{'flex': open, 'hidden': !open}"
+        class=" flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row">
+        <a class="px-4 py-2 mt-2 text-lg font-semibold bg-transparent rounded-lg bg-transparent hover:bg-yellow-600  focus:text-white hover:text-white text-gray-200 md:mt-0 md:ml-4 bg-yellow-600"
+          href="
+          /discord">Discord</a>
+        <a class="px-4 py-2 mt-2 text-lg font-semibold bg-transparent rounded-lg bg-transparent hover:bg-yellow-600  focus:text-white hover:text-white text-gray-200 md:mt-0 md:ml-4 bg-yellow-600"
+          href="
+          #">Informations</a>
+        <% if (isAuthenticated) { %>
+          <a
+            class="px-4 py-2 mt-2 text-lg font-semibold bg-transparent rounded-lg bg-transparent hover:bg-yellow-600  focus:text-white hover:text-white text-gray-200 md:mt-0 md:ml-4 bg-yellow-600">
+            <%= username %>
+          </a>
+          <img src="<%= avatarUrl %>" alt="Avatar" class="avatar">
+          <% } else { %>
+            <a class="invite-btn px-4 py-2 mt-2 text-lg font-semibold  bg-gray-200 rounded-lg bg-gray-700 hover:bg-yellow-600  focus:text-white hover:text-white text-gray-200 md:mt-0 bg-blue-600"
+              href="
+          /auth/login">Connexion</a>
+            <% } %>
+
+    </div>
+    </nav>
+  </div>
+  <section class="">
+    <div class="grid max-w-screen-xl px-4 py-36 mx-auto lg:gap-8 xl:gap-0 lg:py-42 lg:grid-cols-12">
+      <div class="mr-auto place-self-center lg:col-span-7">
+        <h1 data-m="bounce-right"
+          class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl ">Un bot,
+          pour <a class="font-bold link-gradient">tout<img style="position: relative;" src="./assets/images/line-1.gif"
+              width="120px" /></a> !</h1>
+        <p data-m="bounce-right" class="max-w-2xl mb-6 font-sans text-gray-300 lg:mb-8 md:text-lg lg:text-xl ">Profitez
+          de la modération, configuration, commandes uniques, et bien plus, encore au même endroit !</p>
+        <a data-m="bounce-up" href="#"
+          class=" invite-btn inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-white">
+          Inviter
+          <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </a>
+        <a data-m="bounce-up" href="/discord"
+          class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-black bg-white rounded-lg">
+          Discord
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class="section-1">
+    <!--       
+        <h1 class="text-center mx-auto text-white text-3xl py-32 lg:text-6xl"><span style="color: #e6aa1f;"> 24/7 </span> lofi radio bot with multiple radio stations & Hindi lofi</h1>
+         -->
+    <section class="" style="background-color: #1A202C;">
+      <div data-m="bounce-right"
+        class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
+        <img class="hidden dark:block rounded-full" src="./assets/images/hbotLogo.jpg" width="350" alt="logo">
+
+        <div data-m="bounce-left" class="mt-4 md:mt-0">
+          <h2 class="mb-4 tracking-wide text-5xl tracking-tight font-extrabold text-white ">Nous avons réunis<br> <a
+              class="text-gradient-blue">Tout ce dont vous avez besoin</a></h2>
+          <p class="mb-6 font-light text-gray-500 md:text-lg ">Un système de modération complet, des niveaux, de la
+            configurations, et des commandes pour que vos membres ne s'ennuient jamais !</p>
+          <a href="#" class="invite-btn2 inline-flex items-center text-black bg-white rounded px-5 py-2">
+            Inviter
+            <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </section>
+  <section style="background-color: #0f6965;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path fill="#1A202C" fill-opacity="1"
+        d="M0,256L48,250.7C96,245,192,235,288,208C384,181,480,139,576,106.7C672,75,768,53,864,69.3C960,85,1056,139,1152,165.3C1248,192,1344,192,1392,192L1440,192L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z">
+      </path>
+    </svg>
+    <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20"
+      id="features">
+      <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
+        <div>
+        </div>
+        <h2 class="max-w-lg mb-6  text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
+          Ce que nous vous offrons !
+        </h2>
+      </div>
+      <div
+        class="grid max-w-screen-lg mx-auto space-y-6 lg:grid-cols-2 lg:space-y-0 lg:divide-x items-center text-center">
+        <div class="space-y-6 sm:px-16 mx-auto">
+          <div class="flex flex-col max-w-md sm:flex-row items-center">
+            <div class="mb-4 mr-4">
+              <div class="flex items-center justify-center w-12 h-12 rounded-full ">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      d="M12.75 9C12.75 8.58579 12.4142 8.25 12 8.25C11.5858 8.25 11.25 8.58579 11.25 9L11.25 11.25H9C8.58579 11.25 8.25 11.5858 8.25 12C8.25 12.4142 8.58579 12.75 9 12.75H11.25V15C11.25 15.4142 11.5858 15.75 12 15.75C12.4142 15.75 12.75 15.4142 12.75 15L12.75 12.75H15C15.4142 12.75 15.75 12.4142 15.75 12C15.75 11.5858 15.4142 11.25 15 11.25H12.75V9Z"
+                      fill="#ffffff"></path>
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M12 1.25C6.06294 1.25 1.25 6.06294 1.25 12C1.25 17.9371 6.06294 22.75 12 22.75C17.9371 22.75 22.75 17.9371 22.75 12C22.75 6.06294 17.9371 1.25 12 1.25ZM2.75 12C2.75 6.89137 6.89137 2.75 12 2.75C17.1086 2.75 21.25 6.89137 21.25 12C21.25 17.1086 17.1086 21.25 12 21.25C6.89137 21.25 2.75 17.1086 2.75 12Z"
+                      fill="#ffffff"></path>
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <div>
+              <h6 class="mb-3 text-xl font-bold leading-5">Pas sans vous</h6>
+              <p class="text-m text-gray-900">
+                Le développement du bot est basé sur vos retours, vos demandes et vos envies.
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-col max-w-md sm:flex-row items-center">
+            <div class="mb-4 mr-4 ">
+              <div class="flex items-center justify-center w-12 h-12 rounded-full ">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M10.948 1.25H13.052C13.9505 1.24997 14.6997 1.24995 15.2945 1.32991C15.9223 1.41432 16.4891 1.59999 16.9445 2.05546C17.4 2.51093 17.5857 3.07773 17.6701 3.70552C17.6928 3.87459 17.7091 4.05613 17.7207 4.25003C18.3101 4.25037 18.8084 4.25421 19.219 4.29599C19.6925 4.34415 20.1318 4.44886 20.5278 4.71346C20.8281 4.9141 21.0859 5.17191 21.2865 5.47218C21.5511 5.86818 21.6559 6.30755 21.704 6.78102C21.75 7.23336 21.75 7.79209 21.75 8.46168V21.25H22C22.4142 21.25 22.75 21.5858 22.75 22C22.75 22.4142 22.4142 22.75 22 22.75H2C1.58579 22.75 1.25 22.4142 1.25 22C1.25 21.5858 1.58579 21.25 2 21.25H2.25L2.25 8.46166C2.24998 7.79208 2.24997 7.23335 2.29598 6.78102C2.34415 6.30755 2.44886 5.86818 2.71346 5.47218C2.91409 5.17191 3.17191 4.9141 3.47218 4.71346C3.86818 4.44886 4.30755 4.34415 4.78102 4.29599C5.19165 4.25421 5.68995 4.25037 6.27927 4.25003C6.29091 4.05613 6.30718 3.87459 6.32991 3.70552C6.41432 3.07773 6.59999 2.51093 7.05546 2.05546C7.51093 1.59999 8.07773 1.41432 8.70552 1.32991C9.3003 1.24995 10.0495 1.24997 10.948 1.25ZM6.25003 5.75011C5.66742 5.75075 5.25586 5.75542 4.93283 5.78828C4.57796 5.82438 4.41399 5.8882 4.30554 5.96067C4.16905 6.05186 4.05186 6.16905 3.96066 6.30554C3.8882 6.41399 3.82438 6.57796 3.78828 6.93283C3.75091 7.30023 3.75 7.78216 3.75 8.5V21.25H6.25V14.75H5.5C5.08579 14.75 4.75 14.4142 4.75 14C4.75 13.5858 5.08579 13.25 5.5 13.25H6.25V11.75H5.5C5.08579 11.75 4.75 11.4142 4.75 11C4.75 10.5858 5.08579 10.25 5.5 10.25H6.25V8.75H5.5C5.08579 8.75 4.75 8.41422 4.75 8C4.75 7.58579 5.08579 7.25 5.5 7.25H6.25L6.25 5.94801C6.25 5.88122 6.24999 5.81525 6.25003 5.75011ZM7.75 21.25H11.25V19C11.25 18.5858 11.5858 18.25 12 18.25C12.4142 18.25 12.75 18.5858 12.75 19V21.25H16.25V6C16.25 5.03599 16.2484 4.38843 16.1835 3.90539C16.1214 3.44393 16.0142 3.24644 15.8839 3.11612C15.7536 2.9858 15.5561 2.87858 15.0946 2.81654C14.6116 2.7516 13.964 2.75 13 2.75H11C10.036 2.75 9.38843 2.7516 8.90539 2.81654C8.44393 2.87858 8.24643 2.9858 8.11612 3.11612C7.9858 3.24644 7.87858 3.44393 7.81654 3.90539C7.75159 4.38843 7.75 5.03599 7.75 6V21.25ZM17.75 8.75H18.5C18.9142 8.75 19.25 8.41422 19.25 8C19.25 7.58579 18.9142 7.25 18.5 7.25H17.75L17.75 5.94801C17.75 5.88122 17.75 5.81525 17.75 5.75011C18.3326 5.75075 18.7441 5.75542 19.0672 5.78828C19.422 5.82438 19.586 5.8882 19.6945 5.96067C19.8309 6.05186 19.9481 6.16905 20.0393 6.30554C20.1118 6.41399 20.1756 6.57796 20.2117 6.93283C20.2491 7.30023 20.25 7.78216 20.25 8.5V21.25H17.75V14.75H18.5C18.9142 14.75 19.25 14.4142 19.25 14C19.25 13.5858 18.9142 13.25 18.5 13.25H17.75V11.75H18.5C18.9142 11.75 19.25 11.4142 19.25 11C19.25 10.5858 18.9142 10.25 18.5 10.25H17.75V8.75ZM12 5.75C11.3096 5.75 10.75 6.30965 10.75 7C10.75 7.69036 11.3096 8.25 12 8.25C12.6904 8.25 13.25 7.69036 13.25 7C13.25 6.30965 12.6904 5.75 12 5.75ZM9.25 7C9.25 5.48122 10.4812 4.25 12 4.25C13.5188 4.25 14.75 5.48122 14.75 7C14.75 8.51879 13.5188 9.75 12 9.75C10.4812 9.75 9.25 8.51879 9.25 7ZM9.25 12C9.25 11.5858 9.58579 11.25 10 11.25H14C14.4142 11.25 14.75 11.5858 14.75 12C14.75 12.4142 14.4142 12.75 14 12.75H10C9.58579 12.75 9.25 12.4142 9.25 12ZM9.25 15C9.25 14.5858 9.58579 14.25 10 14.25H14C14.4142 14.25 14.75 14.5858 14.75 15C14.75 15.4142 14.4142 15.75 14 15.75H10C9.58579 15.75 9.25 15.4142 9.25 15Z"
+                      fill="#ffffff"></path>
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <div>
+              <h6 class="mb-3 text-xl font-bold leading-5">Notre localisation</h6>
+              <p class="text-m text-gray-900">
+                HeavenBot est situé en France, vous pouvez profiter de tout ce que vous voulez, en français.
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-col max-w-md sm:flex-row items-center">
+            <div class="mb-4 mr-4">
+              <div class="flex items-center justify-center w-12 h-12 rounded-full ">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      d="M12.0762 9.48014C12.3413 9.16193 12.2983 8.68901 11.9801 8.42384C11.6619 8.15867 11.189 8.20166 10.9238 8.51987L8.42383 11.5199C8.23753 11.7434 8.19737 12.0546 8.3208 12.3181C8.44424 12.5817 8.70898 12.75 8.99999 12.75H10.8987L9.42383 14.5199C9.15865 14.8381 9.20165 15.311 9.51986 15.5762C9.83806 15.8413 10.311 15.7983 10.5762 15.4801L13.0762 12.4801C13.2625 12.2566 13.3026 11.9454 13.1792 11.6819C13.0558 11.4183 12.791 11.25 12.5 11.25H10.6013L12.0762 9.48014Z"
+                      fill="#ffffff"></path>
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M9.94358 3.25H11.5564C13.3942 3.24998 14.8498 3.24997 15.989 3.40314C17.1614 3.56076 18.1104 3.89288 18.8588 4.64124C19.6071 5.38961 19.9392 6.33856 20.0969 7.51098C20.25 8.65018 20.25 10.1058 20.25 11.9435V12.0564C20.25 13.8942 20.25 15.3498 20.0969 16.489C19.9392 17.6614 19.6071 18.6104 18.8588 19.3588C18.1104 20.1071 17.1614 20.4392 15.989 20.5969C14.8498 20.75 13.3942 20.75 11.5565 20.75H9.94359C8.10585 20.75 6.65018 20.75 5.51098 20.5969C4.33856 20.4392 3.38961 20.1071 2.64124 19.3588C1.89288 18.6104 1.56076 17.6614 1.40314 16.489C1.24997 15.3498 1.24998 13.8942 1.25 12.0564V11.9436C1.24998 10.1058 1.24997 8.65019 1.40314 7.51098C1.56076 6.33856 1.89288 5.38961 2.64124 4.64124C3.38961 3.89288 4.33856 3.56076 5.51098 3.40314C6.65019 3.24997 8.10583 3.24998 9.94358 3.25ZM5.71085 4.88976C4.70476 5.02502 4.12511 5.27869 3.7019 5.7019C3.27869 6.12511 3.02502 6.70476 2.88976 7.71085C2.75159 8.73851 2.75 10.0932 2.75 12C2.75 13.9068 2.75159 15.2615 2.88976 16.2892C3.02502 17.2952 3.27869 17.8749 3.7019 18.2981C4.12511 18.7213 4.70476 18.975 5.71085 19.1102C6.73851 19.2484 8.09318 19.25 10 19.25H11.5C13.4068 19.25 14.7615 19.2484 15.7892 19.1102C16.7952 18.975 17.3749 18.7213 17.7981 18.2981C18.2213 17.8749 18.475 17.2952 18.6102 16.2892C18.7484 15.2615 18.75 13.9068 18.75 12C18.75 10.0932 18.7484 8.73851 18.6102 7.71085C18.475 6.70476 18.2213 6.12511 17.7981 5.7019C17.3749 5.27869 16.7952 5.02502 15.7892 4.88976C14.7615 4.75159 13.4068 4.75 11.5 4.75H10C8.09318 4.75 6.73851 4.75159 5.71085 4.88976Z"
+                      fill="#ffffff"></path>
+                    <path
+                      d="M22 14.75C21.5858 14.75 21.25 14.4142 21.25 14L21.25 10C21.25 9.58579 21.5858 9.25 22 9.25C22.4142 9.25 22.75 9.58579 22.75 10L22.75 14C22.75 14.4142 22.4142 14.75 22 14.75Z"
+                      fill="#ffffff"></path>
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <div>
+              <h6 class="mb-3 text-xl font-bold leading-5">A tout jamais</h6>
+              <p class="text-m text-gray-900">
+                Nous faisons de notre mieux, pour que le bot soit en ligne à tout moment, pour vous.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="space-y-6 sm:px-16">
+          <div class="flex flex-col max-w-md sm:flex-row items-center">
+            <div class="mb-4 mr-4">
+              <div class="flex items-center justify-center w-12 h-12 rounded-full ">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M12 8.25C9.92893 8.25 8.25 9.92893 8.25 12C8.25 14.0711 9.92893 15.75 12 15.75C14.0711 15.75 15.75 14.0711 15.75 12C15.75 9.92893 14.0711 8.25 12 8.25ZM9.75 12C9.75 10.7574 10.7574 9.75 12 9.75C13.2426 9.75 14.25 10.7574 14.25 12C14.25 13.2426 13.2426 14.25 12 14.25C10.7574 14.25 9.75 13.2426 9.75 12Z"
+                      fill="#ffffff"></path>
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M12 3.25C7.48587 3.25 4.44529 5.9542 2.68057 8.24686L2.64874 8.2882C2.24964 8.80653 1.88206 9.28392 1.63269 9.8484C1.36564 10.4529 1.25 11.1117 1.25 12C1.25 12.8883 1.36564 13.5471 1.63269 14.1516C1.88206 14.7161 2.24964 15.1935 2.64875 15.7118L2.68057 15.7531C4.44529 18.0458 7.48587 20.75 12 20.75C16.5141 20.75 19.5547 18.0458 21.3194 15.7531L21.3512 15.7118C21.7504 15.1935 22.1179 14.7161 22.3673 14.1516C22.6344 13.5471 22.75 12.8883 22.75 12C22.75 11.1117 22.6344 10.4529 22.3673 9.8484C22.1179 9.28391 21.7504 8.80652 21.3512 8.28818L21.3194 8.24686C19.5547 5.9542 16.5141 3.25 12 3.25ZM3.86922 9.1618C5.49864 7.04492 8.15036 4.75 12 4.75C15.8496 4.75 18.5014 7.04492 20.1308 9.1618C20.5694 9.73159 20.8263 10.0721 20.9952 10.4545C21.1532 10.812 21.25 11.2489 21.25 12C21.25 12.7511 21.1532 13.188 20.9952 13.5455C20.8263 13.9279 20.5694 14.2684 20.1308 14.8382C18.5014 16.9551 15.8496 19.25 12 19.25C8.15036 19.25 5.49864 16.9551 3.86922 14.8382C3.43064 14.2684 3.17374 13.9279 3.00476 13.5455C2.84684 13.188 2.75 12.7511 2.75 12C2.75 11.2489 2.84684 10.812 3.00476 10.4545C3.17374 10.0721 3.43063 9.73159 3.86922 9.1618Z"
+                      fill="#ffffff"></path>
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <div>
+              <h6 class="mb-3 text-xl font-bold leading-5">Vous avez l'œil</h6>
+              <p class="text-m text-gray-900">
+                L'entièreté du code est open-source, vous pouvez le consulter à tout moment sur notre github.
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-col max-w-md sm:flex-row items-center">
+            <div class="mb-4 mr-4">
+              <div class="flex items-center justify-center w-12 h-12 rounded-full ">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M14.0992 2.39109C15.6207 0.869636 18.0875 0.869636 19.6089 2.39109C21.1304 3.91255 21.1304 6.37932 19.6089 7.90077L12.0149 15.4948C11.5869 15.9228 11.3255 16.1842 11.0342 16.4115C10.691 16.6792 10.3196 16.9087 9.92667 17.096C9.59315 17.2549 9.24244 17.3718 8.66818 17.5632L5.99553 18.4541L5.35386 18.668C4.77951 18.8594 4.14629 18.7099 3.7182 18.2818C3.2901 17.8537 3.14062 17.2205 3.33207 16.6462L4.43683 13.3318C4.62822 12.7576 4.7451 12.4069 4.90405 12.0734C5.09132 11.6804 5.32084 11.309 5.58856 10.9658C5.81578 10.6745 6.07719 10.4131 6.50525 9.98509L14.0992 2.39109ZM5.96092 16.8845L5.11556 16.0391L5.84398 13.8538C6.05606 13.2176 6.14366 12.9589 6.25814 12.7187C6.39854 12.4241 6.57061 12.1457 6.77132 11.8883C6.93497 11.6785 7.12718 11.4845 7.60141 11.0102L13.4924 5.11927C13.7355 5.72927 14.147 6.46549 14.8408 7.15927C15.5345 7.85306 16.2708 8.26447 16.8807 8.50764L10.9898 14.3986C10.5155 14.8728 10.3215 15.065 10.1117 15.2287C9.85436 15.4294 9.57594 15.6015 9.28134 15.7419C9.04113 15.8564 8.78244 15.944 8.14619 16.156L5.96092 16.8845ZM18.076 7.31241C17.9521 7.28522 17.7973 7.24432 17.6213 7.18325C17.1373 7.01532 16.5006 6.69778 15.9014 6.09861C15.3022 5.49944 14.9847 4.86276 14.8168 4.37873C14.7557 4.2027 14.7148 4.04787 14.6876 3.92404L15.1599 3.45175C16.0956 2.51608 17.6126 2.51608 18.5483 3.45175C19.4839 4.38742 19.4839 5.90444 18.5483 6.84011L18.076 7.31241ZM3.25002 22C3.25002 21.5858 3.58581 21.25 4.00002 21.25H20V22.75H4.00002C3.58581 22.75 3.25002 22.4142 3.25002 22Z"
+                      fill="#ffffff"></path>
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <div>
+              <h6 class="mb-3 text-xl font-bold leading-5">Un petit coup de pinceau</h6>
+              <p class="text-m text-gray-900">
+                Nous avons un panel, pour que vous puissiez personnaliser le bot à votre image.
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-col max-w-md sm:flex-row items-center">
+            <div class="mb-4 mr-4">
+              <div class="flex items-center justify-center w-12 h-12 rounded-full ">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M12 8.25C9.92894 8.25 8.25 9.92893 8.25 12C8.25 14.0711 9.92894 15.75 12 15.75C14.0711 15.75 15.75 14.0711 15.75 12C15.75 9.92893 14.0711 8.25 12 8.25ZM9.75 12C9.75 10.7574 10.7574 9.75 12 9.75C13.2426 9.75 14.25 10.7574 14.25 12C14.25 13.2426 13.2426 14.25 12 14.25C10.7574 14.25 9.75 13.2426 9.75 12Z"
+                      fill="#ffffff"></path>
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M11.9747 1.25C11.5303 1.24999 11.1592 1.24999 10.8546 1.27077C10.5375 1.29241 10.238 1.33905 9.94761 1.45933C9.27379 1.73844 8.73843 2.27379 8.45932 2.94762C8.31402 3.29842 8.27467 3.66812 8.25964 4.06996C8.24756 4.39299 8.08454 4.66251 7.84395 4.80141C7.60337 4.94031 7.28845 4.94673 7.00266 4.79568C6.64714 4.60777 6.30729 4.45699 5.93083 4.40743C5.20773 4.31223 4.47642 4.50819 3.89779 4.95219C3.64843 5.14353 3.45827 5.3796 3.28099 5.6434C3.11068 5.89681 2.92517 6.21815 2.70294 6.60307L2.67769 6.64681C2.45545 7.03172 2.26993 7.35304 2.13562 7.62723C1.99581 7.91267 1.88644 8.19539 1.84541 8.50701C1.75021 9.23012 1.94617 9.96142 2.39016 10.5401C2.62128 10.8412 2.92173 11.0602 3.26217 11.2741C3.53595 11.4461 3.68788 11.7221 3.68786 12C3.68785 12.2778 3.53592 12.5538 3.26217 12.7258C2.92169 12.9397 2.62121 13.1587 2.39007 13.4599C1.94607 14.0385 1.75012 14.7698 1.84531 15.4929C1.88634 15.8045 1.99571 16.0873 2.13552 16.3727C2.26983 16.6469 2.45535 16.9682 2.67758 17.3531L2.70284 17.3969C2.92507 17.7818 3.11058 18.1031 3.28089 18.3565C3.45817 18.6203 3.64833 18.8564 3.89769 19.0477C4.47632 19.4917 5.20763 19.6877 5.93073 19.5925C6.30717 19.5429 6.647 19.3922 7.0025 19.2043C7.28833 19.0532 7.60329 19.0596 7.8439 19.1986C8.08452 19.3375 8.24756 19.607 8.25964 19.9301C8.27467 20.3319 8.31403 20.7016 8.45932 21.0524C8.73843 21.7262 9.27379 22.2616 9.94761 22.5407C10.238 22.661 10.5375 22.7076 10.8546 22.7292C11.1592 22.75 11.5303 22.75 11.9747 22.75H12.0252C12.4697 22.75 12.8407 22.75 13.1454 22.7292C13.4625 22.7076 13.762 22.661 14.0524 22.5407C14.7262 22.2616 15.2616 21.7262 15.5407 21.0524C15.686 20.7016 15.7253 20.3319 15.7403 19.93C15.7524 19.607 15.9154 19.3375 16.156 19.1985C16.3966 19.0596 16.7116 19.0532 16.9974 19.2042C17.3529 19.3921 17.6927 19.5429 18.0692 19.5924C18.7923 19.6876 19.5236 19.4917 20.1022 19.0477C20.3516 18.8563 20.5417 18.6203 20.719 18.3565C20.8893 18.1031 21.0748 17.7818 21.297 17.3969L21.3223 17.3531C21.5445 16.9682 21.7301 16.6468 21.8644 16.3726C22.0042 16.0872 22.1135 15.8045 22.1546 15.4929C22.2498 14.7697 22.0538 14.0384 21.6098 13.4598C21.3787 13.1586 21.0782 12.9397 20.7378 12.7258C20.464 12.5538 20.3121 12.2778 20.3121 11.9999C20.3121 11.7221 20.464 11.4462 20.7377 11.2742C21.0783 11.0603 21.3788 10.8414 21.6099 10.5401C22.0539 9.96149 22.2499 9.23019 22.1547 8.50708C22.1136 8.19546 22.0043 7.91274 21.8645 7.6273C21.7302 7.35313 21.5447 7.03183 21.3224 6.64695L21.2972 6.60318C21.0749 6.21825 20.8894 5.89688 20.7191 5.64347C20.5418 5.37967 20.3517 5.1436 20.1023 4.95225C19.5237 4.50826 18.7924 4.3123 18.0692 4.4075C17.6928 4.45706 17.353 4.60782 16.9975 4.79572C16.7117 4.94679 16.3967 4.94036 16.1561 4.80144C15.9155 4.66253 15.7524 4.39297 15.7403 4.06991C15.7253 3.66808 15.686 3.2984 15.5407 2.94762C15.2616 2.27379 14.7262 1.73844 14.0524 1.45933C13.762 1.33905 13.4625 1.29241 13.1454 1.27077C12.8407 1.24999 12.4697 1.24999 12.0252 1.25H11.9747ZM10.5216 2.84515C10.5988 2.81319 10.716 2.78372 10.9567 2.76729C11.2042 2.75041 11.5238 2.75 12 2.75C12.4762 2.75 12.7958 2.75041 13.0432 2.76729C13.284 2.78372 13.4012 2.81319 13.4783 2.84515C13.7846 2.97202 14.028 3.21536 14.1548 3.52165C14.1949 3.61826 14.228 3.76887 14.2414 4.12597C14.271 4.91835 14.68 5.68129 15.4061 6.10048C16.1321 6.51968 16.9974 6.4924 17.6984 6.12188C18.0143 5.9549 18.1614 5.90832 18.265 5.89467C18.5937 5.8514 18.9261 5.94047 19.1891 6.14228C19.2554 6.19312 19.3395 6.27989 19.4741 6.48016C19.6125 6.68603 19.7726 6.9626 20.0107 7.375C20.2488 7.78741 20.4083 8.06438 20.5174 8.28713C20.6235 8.50382 20.6566 8.62007 20.6675 8.70287C20.7108 9.03155 20.6217 9.36397 20.4199 9.62698C20.3562 9.70995 20.2424 9.81399 19.9397 10.0041C19.2684 10.426 18.8122 11.1616 18.8121 11.9999C18.8121 12.8383 19.2683 13.574 19.9397 13.9959C20.2423 14.186 20.3561 14.29 20.4198 14.373C20.6216 14.636 20.7107 14.9684 20.6674 15.2971C20.6565 15.3799 20.6234 15.4961 20.5173 15.7128C20.4082 15.9355 20.2487 16.2125 20.0106 16.6249C19.7725 17.0373 19.6124 17.3139 19.474 17.5198C19.3394 17.72 19.2553 17.8068 19.189 17.8576C18.926 18.0595 18.5936 18.1485 18.2649 18.1053C18.1613 18.0916 18.0142 18.045 17.6983 17.8781C16.9973 17.5075 16.132 17.4803 15.4059 17.8995C14.68 18.3187 14.271 19.0816 14.2414 19.874C14.228 20.2311 14.1949 20.3817 14.1548 20.4784C14.028 20.7846 13.7846 21.028 13.4783 21.1549C13.4012 21.1868 13.284 21.2163 13.0432 21.2327C12.7958 21.2496 12.4762 21.25 12 21.25C11.5238 21.25 11.2042 21.2496 10.9567 21.2327C10.716 21.2163 10.5988 21.1868 10.5216 21.1549C10.2154 21.028 9.97201 20.7846 9.84514 20.4784C9.80512 20.3817 9.77195 20.2311 9.75859 19.874C9.72896 19.0817 9.31997 18.3187 8.5939 17.8995C7.86784 17.4803 7.00262 17.5076 6.30158 17.8781C5.98565 18.0451 5.83863 18.0917 5.73495 18.1053C5.40626 18.1486 5.07385 18.0595 4.81084 17.8577C4.74458 17.8069 4.66045 17.7201 4.52586 17.5198C4.38751 17.314 4.22736 17.0374 3.98926 16.625C3.75115 16.2126 3.59171 15.9356 3.4826 15.7129C3.37646 15.4962 3.34338 15.3799 3.33248 15.2971C3.28921 14.9684 3.37828 14.636 3.5801 14.373C3.64376 14.2901 3.75761 14.186 4.0602 13.9959C4.73158 13.5741 5.18782 12.8384 5.18786 12.0001C5.18791 11.1616 4.73165 10.4259 4.06021 10.004C3.75769 9.81389 3.64385 9.70987 3.58019 9.62691C3.37838 9.3639 3.28931 9.03149 3.33258 8.7028C3.34348 8.62001 3.37656 8.50375 3.4827 8.28707C3.59181 8.06431 3.75125 7.78734 3.98935 7.37493C4.22746 6.96253 4.3876 6.68596 4.52596 6.48009C4.66055 6.27983 4.74468 6.19305 4.81093 6.14222C5.07395 5.9404 5.40636 5.85133 5.73504 5.8946C5.83873 5.90825 5.98576 5.95483 6.30173 6.12184C7.00273 6.49235 7.86791 6.51962 8.59394 6.10045C9.31998 5.68128 9.72896 4.91837 9.75859 4.12602C9.77195 3.76889 9.80512 3.61827 9.84514 3.52165C9.97201 3.21536 10.2154 2.97202 10.5216 2.84515Z"
+                      fill="#ffffff"></path>
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <div>
+              <h6 class="mb-3 text-xl font-bold leading-5">Des changements réguliers</h6>
+              <p class="text-m text-gray-900">
+                Pour que HeavenBot puisse vous correspondre, nous faisons des mises à jour régulières.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-white  text-center">Lofi Beats Live stats</h2>
+    <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 content-center item-center">
+      
+      <div class="grid grid-cols-3 row-gap-8 md:grid-cols-3 text-white ">
+        <div class="text-center md:border-r ">
+          <h6 class="text-4xl font-bold lg:text-5xl xl:text-6xl server"></h6>
+          <p class="text-sm font-medium tracking-widest text-white uppercase lg:text-base">
+            Servers
+          </p>
+        </div>
+        
+          <div class="text-center md:border-r ">
+            <h6 class="text-4xl font-bold lg:text-5xl xl:text-6xl time"></h6>
+            <p class="text-sm font-medium tracking-widest text-white uppercase lg:text-base">
+              Uptime
+            </p>
+          </div>
+        <div class="text-center   ">
+          <h6 class="text-4xl font-bold lg:text-5xl xl:text-6xl user"></h6>
+          <p class="text-sm font-medium tracking-widest text-white uppercase lg:text-base">
+            Users
+          </p>
+        </div>
+
+      </div>
+    </div> -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path fill="#2c3650" fill-opacity="1"
+        d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+      </path>
+    </svg>
+  </section>
+  <section style="background-color: #2c3650;">
+    <!-- MDI Icons -->
+
+
+    <!-- Page Container -->
+    <div class="flex items-center justify-center min-h-screen  py-10">
+      <div class="flex flex-col">
+        <!-- Notes -->
+
+
+        <div class="flex flex-col mt-8">
+          <!-- Meet the Team -->
+          <div class="container max-w-7xl px-4">
+            <!-- Section Header -->
+            <div class="flex flex-wrap justify-center text-center mb-24">
+              <div class="w-full lg:w-6/12 px-4">
+                <!-- Header -->
+                <h2 class="mb-4 tracking-wide text-5xl tracking-tight font-extrabold text-white ">Membres<br> <a
+                    class="team-text">HeavenBot</a></h2>
+                </h1>
+
+                <!-- Description -->
+                <p class="text-gray-300 text-lg font-light">
+
+                </p>
+              </div>
+            </div>
+
+            <!-- Team Members -->
+            <div class="flex flex-wrap justify-center">
+              <% users.forEach(user=> { %>
+                <!-- Member -->
+                <div class="w-full md:w-6/12 lg:w-4/12 mb-6 px-6 sm:px-6 lg:px-4">
+                  <div class="flex flex-col">
+                    <!-- Avatar -->
+                    <a href="#" class="relative mx-auto">
+                      <img
+                        class="rounded-full drop-shadow-md hover:drop-shadow-xl transition-all duration-200 delay-100"
+                        src="<%= user.avatarUrl %>" width="215">
+
+                      <div class="status-indicator">
+                        <% if (user.status==='dnd' ) { %>
+                          <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                              <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M6 12A6 6 0 106 0a6 6 0 000 12zM3 5a1 1 0 000 2h6a1 1 0 100-2H3z" fill="#ED4245">
+                              </path>
+                            </g>
+                          </svg>
+                          <% } else if (user.status==='idle' ) { %>
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                              transform="matrix(-1, 0, 0, 1, 0, 0)">
+                              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                              <g id="SVGRepo_iconCarrier">
+                                <path
+                                  d="M12 22C17.5228 22 22 17.5228 22 12C22 11.5373 21.3065 11.4608 21.0672 11.8568C19.9289 13.7406 17.8615 15 15.5 15C11.9101 15 9 12.0899 9 8.5C9 6.13845 10.2594 4.07105 12.1432 2.93276C12.5392 2.69347 12.4627 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                                  fill="#FAA61A"></path>
+                              </g>
+                            </svg>
+                            <% } else if (user.status==='online' ) { %>
+                              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                  <circle cx="8" cy="8" r="8" fill="#3BA55D"></circle>
+                                </g>
+                              </svg>
+                              <% } else if (user.status==='offline' ) { %>
+                                <svg fill="#747F8D " viewBox="0 0 32 32" version="1.1"
+                                  xmlns="http://www.w3.org/2000/svg">
+                                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                  <g id="SVGRepo_iconCarrier">
+                                    <title>alt-circle</title>
+                                    <path
+                                      d="M0 16q0-3.232 1.28-6.208t3.392-5.12 5.12-3.392 6.208-1.28q3.264 0 6.24 1.28t5.088 3.392 3.392 5.12 1.28 6.208q0 3.264-1.28 6.208t-3.392 5.12-5.12 3.424-6.208 1.248-6.208-1.248-5.12-3.424-3.392-5.12-1.28-6.208zM8 16q0 3.328 2.336 5.664t5.664 2.336 5.664-2.336 2.336-5.664-2.336-5.632-5.664-2.368-5.664 2.368-2.336 5.632z">
+                                    </path>
+                                  </g>
+                                </svg>
+                                <% } %>
+                      </div>
+                    </a>
+
+                    <!-- Details -->
+                    <div class="text-center mt-6">
+                      <!-- Name -->
+                      <h1 class="text-white text-xl font-bold mb-1">
+                        @<%= user.username %>
+                      </h1>
+
+                      <!-- Title -->
+                      <div class="text-gray-200 text-sm font-light mb-2">
+                        <% if (user.id==='716639931610562563' ) { %>
+                          Fondatrice & Développeuse
+                          <% } else if (user.id==='149552169467510784' ) { %>
+                            Administrateur
+                            <% } else if (user.id==='684762911373000716' ) { %>
+                              Administratrice
+                              <% } %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <% }) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path fill="#111827" fill-opacity="1"
+        d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+      </path>
+    </svg>
+    <footer class="bg-white dark:bg-gray-900">
+      <div class="container p-6 mx-auto">
+        <div class="lg:flex">
+          <div class="w-full -mx-6 lg:w-2/5">
+            <div class="px-6">
+              <div>
+                <a href="#"
+                  class="text-xl font-bold text-gray-800 dark:text-white hover:text-gray-700 dark:hover:text-gray-300">HeavenBot</a>
+              </div>
+
+              <p class="max-w-sm mt-2 text-gray-500 dark:text-gray-400">Profitez de la modération, configuration,
+                commandes uniques, et bien plus, encore au même endroit !</p>
+
+              <div class="flex mt-6 -mx-2">
+                <a href="#"
+                  class="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
+                  aria-label="Reddit">
+                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C21.9939 17.5203 17.5203 21.9939 12 22ZM6.807 10.543C6.20862 10.5433 5.67102 10.9088 5.45054 11.465C5.23006 12.0213 5.37133 12.6558 5.807 13.066C5.92217 13.1751 6.05463 13.2643 6.199 13.33C6.18644 13.4761 6.18644 13.6229 6.199 13.769C6.199 16.009 8.814 17.831 12.028 17.831C15.242 17.831 17.858 16.009 17.858 13.769C17.8696 13.6229 17.8696 13.4761 17.858 13.33C18.4649 13.0351 18.786 12.3585 18.6305 11.7019C18.475 11.0453 17.8847 10.5844 17.21 10.593H17.157C16.7988 10.6062 16.458 10.7512 16.2 11C15.0625 10.2265 13.7252 9.79927 12.35 9.77L13 6.65L15.138 7.1C15.1931 7.60706 15.621 7.99141 16.131 7.992C16.1674 7.99196 16.2038 7.98995 16.24 7.986C16.7702 7.93278 17.1655 7.47314 17.1389 6.94094C17.1122 6.40873 16.6729 5.991 16.14 5.991C16.1022 5.99191 16.0645 5.99491 16.027 6C15.71 6.03367 15.4281 6.21641 15.268 6.492L12.82 6C12.7983 5.99535 12.7762 5.993 12.754 5.993C12.6094 5.99472 12.4851 6.09583 12.454 6.237L11.706 9.71C10.3138 9.7297 8.95795 10.157 7.806 10.939C7.53601 10.6839 7.17843 10.5422 6.807 10.543ZM12.18 16.524C12.124 16.524 12.067 16.524 12.011 16.524C11.955 16.524 11.898 16.524 11.842 16.524C11.0121 16.5208 10.2054 16.2497 9.542 15.751C9.49626 15.6958 9.47445 15.6246 9.4814 15.5533C9.48834 15.482 9.52348 15.4163 9.579 15.371C9.62737 15.3318 9.68771 15.3102 9.75 15.31C9.81233 15.31 9.87275 15.3315 9.921 15.371C10.4816 15.7818 11.159 16.0022 11.854 16C11.9027 16 11.9513 16 12 16C12.059 16 12.119 16 12.178 16C12.864 16.0011 13.5329 15.7863 14.09 15.386C14.1427 15.3322 14.2147 15.302 14.29 15.302C14.3653 15.302 14.4373 15.3322 14.49 15.386C14.5985 15.4981 14.5962 15.6767 14.485 15.786V15.746C13.8213 16.2481 13.0123 16.5208 12.18 16.523V16.524ZM14.307 14.08H14.291L14.299 14.041C13.8591 14.011 13.4994 13.6789 13.4343 13.2429C13.3691 12.8068 13.6162 12.3842 14.028 12.2269C14.4399 12.0697 14.9058 12.2202 15.1478 12.5887C15.3899 12.9572 15.3429 13.4445 15.035 13.76C14.856 13.9554 14.6059 14.0707 14.341 14.08H14.306H14.307ZM9.67 14C9.11772 14 8.67 13.5523 8.67 13C8.67 12.4477 9.11772 12 9.67 12C10.2223 12 10.67 12.4477 10.67 13C10.67 13.5523 10.2223 14 9.67 14Z">
+                    </path>
+                  </svg>
+                </a>
+
+                <a href="#"
+                  class="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
+                  aria-label="Facebook">
+                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M2.00195 12.002C2.00312 16.9214 5.58036 21.1101 10.439 21.881V14.892H7.90195V12.002H10.442V9.80204C10.3284 8.75958 10.6845 7.72064 11.4136 6.96698C12.1427 6.21332 13.1693 5.82306 14.215 5.90204C14.9655 5.91417 15.7141 5.98101 16.455 6.10205V8.56104H15.191C14.7558 8.50405 14.3183 8.64777 14.0017 8.95171C13.6851 9.25566 13.5237 9.68693 13.563 10.124V12.002H16.334L15.891 14.893H13.563V21.881C18.8174 21.0506 22.502 16.2518 21.9475 10.9611C21.3929 5.67041 16.7932 1.73997 11.4808 2.01722C6.16831 2.29447 2.0028 6.68235 2.00195 12.002Z">
+                    </path>
+                  </svg>
+                </a>
+
+                <a href="#"
+                  class="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
+                  aria-label="Github">
+                  <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M12.026 2C7.13295 1.99937 2.96183 5.54799 2.17842 10.3779C1.395 15.2079 4.23061 19.893 8.87302 21.439C9.37302 21.529 9.55202 21.222 9.55202 20.958C9.55202 20.721 9.54402 20.093 9.54102 19.258C6.76602 19.858 6.18002 17.92 6.18002 17.92C5.99733 17.317 5.60459 16.7993 5.07302 16.461C4.17302 15.842 5.14202 15.856 5.14202 15.856C5.78269 15.9438 6.34657 16.3235 6.66902 16.884C6.94195 17.3803 7.40177 17.747 7.94632 17.9026C8.49087 18.0583 9.07503 17.99 9.56902 17.713C9.61544 17.207 9.84055 16.7341 10.204 16.379C7.99002 16.128 5.66202 15.272 5.66202 11.449C5.64973 10.4602 6.01691 9.5043 6.68802 8.778C6.38437 7.91731 6.42013 6.97325 6.78802 6.138C6.78802 6.138 7.62502 5.869 9.53002 7.159C11.1639 6.71101 12.8882 6.71101 14.522 7.159C16.428 5.868 17.264 6.138 17.264 6.138C17.6336 6.97286 17.6694 7.91757 17.364 8.778C18.0376 9.50423 18.4045 10.4626 18.388 11.453C18.388 15.286 16.058 16.128 13.836 16.375C14.3153 16.8651 14.5612 17.5373 14.511 18.221C14.511 19.555 14.499 20.631 14.499 20.958C14.499 21.225 14.677 21.535 15.186 21.437C19.8265 19.8884 22.6591 15.203 21.874 10.3743C21.089 5.54565 16.9181 1.99888 12.026 2Z">
+                    </path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 lg:mt-0 lg:flex-1">
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+              <div>
+                <h3 class="text-gray-700 uppercase dark:text-white">Nos liens</h3>
+                <a href="/discord" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Serveur
+                  Discord</a>
+                <a href="#" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Inviter le
+                  bot</a>
+                <a href="#" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Termes &
+                  Conditions</a>
+              </div>
+
+              <div>
+                <h3 class="text-gray-700 uppercase dark:text-white">HeavenBot</h3>
+                <a href="#" class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">Top.gg</a>
+
+              </div>
+
+
+
+              <div>
+                <h3 class="text-gray-700 uppercase dark:text-white">Nous contacter</h3>
+
+                <span class="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"><a
+                    href="/discord">Serveur de support</a></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="h-px my-6 bg-gray-200 border-none dark:bg-gray-700">
+
+        <div>
+          <p class="text-center text-gray-500 dark:text-gray-400">© HeavenBot <span id="date"></span> - All rights
+            reserved</p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      const d = new Date();
+      let year = d.getFullYear();
+      document.getElementById("date").innerHTML = year;
+    </script>
+</body>
+
+</html>
