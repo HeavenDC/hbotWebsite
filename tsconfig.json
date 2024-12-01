@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "CommonJS",
+    "rootDir": "./",
+    "outDir": "./dist",
+    "strict": true,
+    "esModuleInterop": true
+  },
+  "include": [
+    "server/**/*",
+    "bot/**/*"
+, "server/public/assets", "src/configs/serverConfig.ts", "src/configs/botConfig.ts"  ],
+  "exclude": ["node_modules"]
+}
